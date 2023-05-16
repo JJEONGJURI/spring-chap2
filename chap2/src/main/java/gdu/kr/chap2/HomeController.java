@@ -3,12 +3,13 @@ package gdu.kr.chap2;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component //객체만들어짐
 public class HomeController {
 	private AlarmDevice alarmDevice;
 	private Viewer viewer;
@@ -21,7 +22,8 @@ public class HomeController {
 	@Autowired
 	private Camera camera3;
 	
-	@Autowired
+//	@Autowired
+	@Resource(name="camera4") //camera4 이름가진 객체 주입.
 	private Camera camera4;
 	
 	@Autowired(required=false) //있을수도 있고 없을수도 있음

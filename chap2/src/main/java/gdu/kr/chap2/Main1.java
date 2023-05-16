@@ -17,12 +17,18 @@ public class Main1 {
 		 * 6.HomeController 객체 => 1개  @Component
 		 * 7.Executor 객체 => 1개  @Component
 		 * 8.Worker 객체 => 1개 @Component
+		 * 
+		 * GenericXmlApplicationContext : ApplicationContext 구현 클래스
+		 * ApplicationContext : 인터페이스. 객체를 미리 생성
+		 * 						annotation.xml 정의된 객체들을 미리 생성하여 저장\
+		 * WebApplicationContext : ApplicationContext 의 하위 인터페이스
+		 * 							=> ApplicationContext + Web 기능
 		 */
 		
 		ApplicationContext ctx = 
-				new GenericXmlApplicationContext("classpath:annotation.xml");
+				new GenericXmlApplicationContext("classpath:annotation.xml"); //GenericXmlApplicationContext:컨테이너 객체 만든다.
 		Executor exec = ctx.getBean("executor",Executor.class);
-		exec.addUnit(new WorkUnit());
+		exec.addUnit(new WorkUnit()); //worker 객체를 일회용 객체로 해서 결과가 밑에꺼랑 다르다 
 		exec.addUnit(new WorkUnit());
 		HomeController home = ctx.getBean("homeController",HomeController.class);
 		home.checkSensorAndAlarm(); //console 출력되는 내용이 없음
