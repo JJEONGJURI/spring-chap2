@@ -35,7 +35,7 @@ public class AppCtx {
 
 	@Bean
 	public Camera camera3() {
-		Camera c = new Camera();
+		Camera c = new Camera();  
 		c.setNumber(3);
 		return c;
 	}
